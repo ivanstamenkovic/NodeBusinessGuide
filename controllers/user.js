@@ -23,7 +23,7 @@ var User = require('../Schemas/User');
 
 
 exports.createUser = function(req,res){
-    if(req.body.username && req.body.email && req.body.password)
+    if(req.body.username && req.body.email && req.body.password && req.body.picture)
     {
         User.find({$or:[{"username":req.body.username},{"email":req.body.email}]},function (err,users) {
             if(err) {
@@ -43,6 +43,7 @@ exports.createUser = function(req,res){
                         user.email = req.body.email;
                         user.password=hash;
                         user.verified = false;
+                        user.picture = req.body.picture;
 
                          user.token = jwt.sign(user, process.env.SECRET_KEY ,{
 
@@ -81,7 +82,7 @@ exports.createUser = function(req,res){
         });
     }
     else {
-        res.status(400).json("Specify an username,email and password");
+        res.status(400).json("Specify username,email, password and picture");
     }
 
 };

@@ -33,7 +33,7 @@ exports.login = function (req,res) {
                     }
                     else {
                         if(same) {
-                            res.status(200).json({"token": user.token, "user_id": user._id});
+                            res.status(200).json({"token": user.token, "user_id": user._id, "picture": user.picture});
                         }
                         else {
                             res.status(400).json("Incorrect password")
