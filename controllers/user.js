@@ -69,6 +69,7 @@ exports.createUser = function(req,res){
                                     else {
                                         console.log(info);
                                     }
+                                    user.token = null;
                                     res.status(200).json(user);
 
                                 });
