@@ -44,7 +44,7 @@ exports.getCompanyProductCategories = function (req, res) {
                 res.status(400).json("Invalid company id");
             }
             else {
-                ProductCategory.find({$in: {'_id': company._productCategories}}, function (err, productCategories) {
+                ProductCategory.find({'_id': {$in: company._productCategories}}, function (err, productCategories) {
                     if (err) {
                         res.status(500).json("An error occurred");
                     }
@@ -70,7 +70,7 @@ exports.getCompanyProducts = function (req, res) {
                 res.status(400).json("Invalid company id");
             }
             else {
-                Product.find({$in: {'_id': company._products}}, function (err, products) {
+                Product.find({'_id': {$in: company._products}}, function (err, products) {
                     if (err) {
                         res.status(500).json("An error occurred");
                     }

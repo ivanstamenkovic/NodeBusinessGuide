@@ -41,7 +41,7 @@ exports.getProductCompanies = function (req, res) {
                 res.status(400).json("Invalid product id");
             }
             else {
-                Company.find({$in: {'_id': product._companies}}, function (err, companies) {
+                Company.find({'_id': {$in: product._companies}}, function (err, companies) {
                     if (err) {
                         res.status(500).json("An error occurred");
                     }

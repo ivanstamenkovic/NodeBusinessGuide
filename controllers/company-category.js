@@ -55,7 +55,7 @@ exports.getCompanyCategoryCompanies = function (req,res) {
                 res.status(400).json("Invalid companyCategory id");
             }
             else {
-                Company.find({$in: {'_id': companyCategory._companies}}, function (err, companies) {
+                Company.find({'_id': {$in: companyCategory._companies}}, function (err, companies) {
                     if (err) {
                         res.status(500).json("An error occurred");
                     }
@@ -110,14 +110,14 @@ exports.getCompanyCategoryProductCategories = function (req, res) {
                 res.status(400).json("Invalid companyCategory id");
             }
             else {
-                ProductCategory.find({$in: {'_id': companyCategory._productCategories}}, function (err, productCategories) {
+                ProductCategory.find({'_id': {$in: companyCategory._productCategories}}, function (err, productCategories) {
                     if (err) {
                         res.status(500).json("An error occurred");
                     }
                     else {
                         res.status(200).json(productCategories);
                     }
-                })
+                });
             }
         });
     }
